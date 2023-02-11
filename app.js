@@ -1,6 +1,8 @@
 "use strict"
 
+// --------------------------------------------------------
 // --------------------SELECTED ELEMENTS-------------------
+// --------------------------------------------------------
 const inputEl = document.querySelector("input");
 const searchBtn = document.getElementById("search-btn");
 const locationBtn = document.getElementById("location-btn");
@@ -11,8 +13,9 @@ let latitude, longitude;
 
 
 
-
+// ---------------------------------------------------------
 // ------------------EVENT LISTENERS------------------------
+// ---------------------------------------------------------
 searchBtn.addEventListener("click", function () {
     getCoordinates(inputEl.value);
     setTimeout(() => {
@@ -41,8 +44,9 @@ document.addEventListener("DOMContentLoaded", function () {
 })
 
 
-
-// -----------------------FUNCTIONS----------------------
+// ------------------------------------------------------
+// -----------------WEATHER DATA FUNCTIONS---------------
+// ------------------------------------------------------
 function getCoordinates(city) {
     fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${city}`).then((response) => response.json()).then((coordinatesData) => {
         console.log("success", coordinatesData);
@@ -77,6 +81,10 @@ function getAirQuality() {
     })
 }
 
+
+// ------------------------------------------------------
+// -----------------USER LOCATION/IP---------------------
+// ------------------------------------------------------
 function currentLocation() {
     const options = {
         enableHighAccuracy: true,
