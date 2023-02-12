@@ -6,7 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1,
   maximum-scale=5" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;500;600;700;800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <title>Weather</title>
 </head>
@@ -24,15 +27,18 @@
       <img id="main-image" src="" alt="">
 
       <h1><span id="today-temp"></span>℃</h1>
-      <div class="today-date">
-        <p>Today</p>
-        <p id="today-date"></p>
-      </div>
-      <div class="location">
-        <span class="material-icons">
-          location_on
-        </span>
-        <p id="today-location"></p>
+      <div class="date-and-location">
+        <div class="today-date">
+          <p>Today</p>
+          <p>•</p>
+          <p id="today-date"></p>
+        </div>
+        <div class="location">
+          <span class="material-icons">
+            location_on
+          </span>
+          <p id="today-location"></p>
+        </div>
       </div>
     </div>
     <div class="search-container hidden">
