@@ -15,16 +15,12 @@ let city;
 const todayLocationEl = document.getElementById("today-location");
 
 
-
-const weekdayArr = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-const monthArr = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-
-
-
 // ---------------------------------------------------------
 // -------------------------DATE SET------------------------
 // ---------------------------------------------------------
+const weekdayArr = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const monthArr = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
 let date = new Date();
 let hour = date.getHours();
 
@@ -111,7 +107,6 @@ closeSearchBtn.addEventListener("click", () => {
 // ------------------------------------------------------
 // -----------------WEATHER DATA FUNCTIONS---------------
 // ------------------------------------------------------
-
 function getCoordinates(city) {
     fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${city}`).then((response) => response.json()).then((coordinatesData) => {
         console.log("success", coordinatesData);
@@ -207,9 +202,8 @@ function yourCity() {
 // ------------------------------------------------------
 // -----------------TODAYS WEATHER-----------------------
 // ------------------------------------------------------
-
 const todayTempEl = document.getElementById("today-temp");
-const todayDescirptionEl = document.getElementById("description");
+const mainImgEl = document.getElementById("main-image");
 const todayWindEl = document.getElementById("wind-value");
 const todayWindArrowEl = document.getElementById("wind-direction-arrow");
 const todayhumidityEl = document.getElementById("humidity-value");
@@ -225,6 +219,8 @@ function setTodayValues(data) {
     todayhumidityEl.innerText = data.hourly.relativehumidity_2m[hour];
     humidityBar.value = data.hourly.relativehumidity_2m[hour];
     todayAirPressureEl.innerText = data.hourly.surface_pressure[hour];
+    let code = data.hourly.weathercode[hour];
+    setImage(code, mainImgEl);
 }
 
 function setTodayAirQuality(data) {
@@ -232,6 +228,10 @@ function setTodayAirQuality(data) {
 }
 
 
+
+// ------------------------------------------------------
+// -----------------NEXT 5 DAYS WEATHER------------------
+// ------------------------------------------------------
 function setNext5DaysWeather() {
     const next5DaysMaxTemp = document.querySelectorAll(".future-temp-max");
     next5DaysMaxTemp.forEach((max, index) => {
@@ -242,4 +242,60 @@ function setNext5DaysWeather() {
     next5DaysMinTemp.forEach((min, index) => {
         min.innerText = futureData.daily.temperature_2m_min[index + 1] + "℃";
     });
+
+    const futureImg = document.querySelectorAll(".future-img");
+    futureImg.forEach((img, index) => {
+        let code = futureData.daily.weathercode[index + 1];
+        // img.src = "images/Snow.png"
+        setImage(code, img);
+    })
+}
+
+function setImage(code, img) {
+    switch (code) {
+        case 0:
+            img.src = "images/Clear.png"
+            break;
+        case 1:
+        case 2:
+        case 3:
+            img.src = "images/LightCloud.png"
+            break;
+        case 45:
+        case 48:
+            img.src = "images/HeavyCloud.png"
+            break;
+        case 71:
+        case 73:
+        case 75:
+        case 77:
+            img.src = "images/Snow.png"
+            break;
+        case 51:
+        case 53:
+        case 55:
+        case 61:
+        case 63:
+        case 65:
+            img.src = "images/LightRain.png"
+            break;
+        case 56:
+        case 57:
+        case 66:
+        case 67:
+        case 85:
+        case 86:
+            img.src = "images/Sleet.png"
+            break;
+        case 80:
+        case 81:
+        case 82:
+            img.src = "images/HeavyRain.png"
+            break;
+        case 95:
+        case 96:
+        case 99:
+            img.src = "images/ThunderStorm.png"
+            break;
+    }
 }
