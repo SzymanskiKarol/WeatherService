@@ -7,7 +7,7 @@ const inputEl = document.getElementById("search-inp");
 const searchBtn = document.getElementById("search-btn");
 const locationBtn = document.getElementById("location-btn");
 const searchPlacesBtn = document.getElementById("search-places");
-const closeSearchBtn = document.getElementById("close-search-container");
+const closeSearchBtn = document.getElementById("close-search-btn");
 
 let latitude, longitude;
 let todayData, futureData, airData;
@@ -57,8 +57,10 @@ searchBtn.addEventListener("click", function () {
         setTodayValues(todayData);
         setTodayAirQuality(airData);
         setNext5DaysWeather();
-        todayLocationEl.innerText = inputEl.value;
+        todayLocationEl.innerText = capitalizeFirstLetter(inputEl.value);
         inputEl.value = '';
+        document.querySelector(".search-container").classList.add("hidden");
+        document.querySelector(".today-weather-container").classList.remove("hidden");
     }, 600)
 })
 
@@ -298,4 +300,8 @@ function setImage(code, img) {
             img.src = "images/ThunderStorm.png"
             break;
     }
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }

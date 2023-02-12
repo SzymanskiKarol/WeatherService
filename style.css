@@ -26,26 +26,21 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 3rem 1rem;
+    /* padding: 1rem; */
+    position: relative;
 }
 
 .today-weather-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     height: 100vh;
     /* width: 100%; */
+    padding: 15% 5% 0 5%;
 }
 
-.search-top-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-}
-
-#search-places {
+.btn {
     background: var(--text-gray);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: .5rem;
@@ -53,7 +48,16 @@ body {
     transition: all .4s ease;
 }
 
+#search-places {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+}
+
 #location-btn {
+    position: absolute;
+    top: 5%;
+    right: 5%;
     cursor: pointer;
     background: var(--text-gray);
     padding: .25rem;
@@ -61,10 +65,38 @@ body {
     transition: all .4s ease;
 }
 
-#search-places:hover,
+.btn:hover,
 #location-btn:hover {
     color: var(--text-gray);
     background: var(--text-white);
+}
+
+.search-container {
+    padding-top: 5rem;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: space-around; */
+}
+
+#close-search-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    /* transform: translate(-50%, 50%); */
+    cursor: pointer;
+}
+
+
+#close-search-btn:hover {
+    transform: scale(1.5);
+}
+
+input {
+    height: 32px;
+    padding: 0 .5rem;
+    background: transparent;
+    border: 1px solid var(--text-white);
+    color: var(--text-white);
 }
 
 h1 {
@@ -105,41 +137,64 @@ h1 {
     justify-content: space-around;
     width: 75vw;
     background: var(--very-dark-blue);
-    padding: 2rem;
+    padding: 2rem 5%;
 }
 
 .future-weather-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 2rem;
+    gap: 2%;
+    width: 100%;
+    max-height: 30vh;
 }
 
 .future-box {
+    width: 100%;
     background: var(--dark-blue);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
-    gap: 1rem;
+    padding: 10%;
+    gap: 1.5rem;
 }
-
 
 #main-image {
     width: 100%;
 }
 
-.future-img {
-    width: 50px;
+p {
+    font-size: .875rem;
 }
 
 
+.future-img {
+    height: 50px;
+}
+
+.future-temp {
+    gap: 10%;
+    font-size: .75rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.today-hightlighs-container {
+    max-height: 70vh;
+}
 
 .today-details {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: 2.5fr 2fr;
     gap: 2rem;
+}
+
+h3 {
+    margin-bottom: 2%;
+    font-size: 1.5rem;
 }
 
 .today-details-box {
@@ -147,8 +202,37 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 1rem;
+    gap: .5rem;
+}
 
+label {
+    font-size: .5rem;
+}
+
+/* For Firefox */
+progress::-moz-progress-bar {
+    background: rgb(209, 209, 108);
+    height: 10px;
+}
+
+/* For Chrome or Safari */
+progress::-webkit-progress-value {
+    background: rgb(209, 209, 108);
+    height: 10px;
+
+}
+
+/* For IE10 */
+progress {
+    background: rgb(209, 209, 108);
+    height: 10px;
+}
+
+
+.today-details-box span:not(.material-icons) {
+    font-size: 4rem;
 }
 
 .humidity-bar {
@@ -174,7 +258,11 @@ h1 {
 
 
 
-
+@media (min-width:1100px) {
+    .right-side {
+        padding: 2rem 10%;
+    }
+}
 
 
 

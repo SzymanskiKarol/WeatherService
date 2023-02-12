@@ -17,15 +17,11 @@
 <body>
   <div class="left-side">
     <div class="today-weather-container">
-      <div class="search-top-bar">
-        <button class="btn" id="search-places">Search for places</button>
-        <span id="location-btn" class="material-icons">
-          my_location
-        </span>
-      </div>
-
+      <button class="btn" id="search-places">Search for places</button>
+      <span id="location-btn" class="material-icons">
+        my_location
+      </span>
       <img id="main-image" src="" alt="">
-
       <h1><span id="today-temp"></span>℃</h1>
       <div class="date-and-location">
         <div class="today-date">
@@ -42,9 +38,9 @@
       </div>
     </div>
     <div class="search-container hidden">
-      <input type="text" name="" id="search-inp">
+      <input type="text" name="" id="search-inp" placeholder="Search location">
       <button class="btn" id="search-btn">Search</button>
-      <span class="material-icons" id="close-search-container">
+      <span class="material-icons" id="close-search-btn">
         close
       </span>
     </div>
@@ -56,6 +52,7 @@
         <img class="future-img" src="" alt="">
         <div class="future-temp">
           <span class="future-temp-max"></span>
+          <p>•</p>
           <span class="future-temp-min"></span>
         </div>
       </div>
@@ -64,6 +61,7 @@
         <img class="future-img" src="" alt="">
         <div class="future-temp">
           <span class="future-temp-max"></span>
+          <p>•</p>
           <span class="future-temp-min"></span>
         </div>
       </div>
@@ -72,6 +70,7 @@
         <img class="future-img" src="" alt="">
         <div class="future-temp">
           <span class="future-temp-max"></span>
+          <p>•</p>
           <span class="future-temp-min"></span>
         </div>
       </div>
@@ -80,6 +79,7 @@
         <img class="future-img" src="" alt="">
         <div class="future-temp">
           <span class="future-temp-max"></span>
+          <p>•</p>
           <span class="future-temp-min"></span>
         </div>
       </div>
@@ -88,12 +88,13 @@
         <img class="future-img" src="" alt="">
         <div class="future-temp">
           <span class="future-temp-max"></span>
+          <p>•</p>
           <span class="future-temp-min"></span>
         </div>
       </div>
     </div>
     <div class="today-hightlighs-container">
-      <h2>Today's Hightlights</h2>
+      <h3 class="">Today's Hightlights</h3>
       <div class="today-details">
         <div class="today-details-box wind-box">
           <p>Wind</p>
@@ -111,7 +112,7 @@
             <div class="humidity-bar-labels">
               <label for="humidity-progress">0</label>
               <label for="humidity-progress">50</label>
-              <label for="humidity-progress">100</label>
+              <label for="humidity-progress">100%</label>
             </div>
             <progress id="humidity-progress" max="100" value="70"></progress>
           </div>
