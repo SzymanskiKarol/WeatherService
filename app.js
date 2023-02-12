@@ -9,11 +9,41 @@ const locationBtn = document.getElementById("location-btn");
 const searchPlacesBtn = document.getElementById("search-places");
 const closeSearchBtn = document.getElementById("close-search-container");
 
-
-
-let hour = new Date().getHours();
 let latitude, longitude;
 let todayData, futureData, airData;
+let city;
+const todayLocationEl = document.getElementById("today-location");
+
+
+
+const weekdayArr = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const monthArr = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+
+
+
+// ---------------------------------------------------------
+// -------------------------DATE SET------------------------
+// ---------------------------------------------------------
+let date = new Date();
+let hour = date.getHours();
+
+function dateValues(index) {
+    let nextDay = new Date(date);
+    nextDay.setDate(date.getDate() + index);
+    let month = monthArr[nextDay.getMonth()];
+    let day = nextDay.getDate();
+    let weekday = weekdayArr[nextDay.getDay()];
+    return `${weekday}, ${day} ${month}`;
+}
+
+const todayDateEl = document.getElementById("today-date");
+todayDateEl.innerText = dateValues(0);
+
+const futureDateEl = document.querySelectorAll(".future-date");
+futureDateEl.forEach((day, index) => {
+    day.innerText = dateValues(index + 1);
+})
 
 
 
@@ -30,6 +60,9 @@ searchBtn.addEventListener("click", function () {
     setTimeout(() => {
         setTodayValues(todayData);
         setTodayAirQuality(airData);
+        setNext5DaysWeather();
+        todayLocationEl.innerText = inputEl.value;
+        inputEl.value = '';
     }, 600)
 })
 
@@ -39,10 +72,13 @@ locationBtn.addEventListener("click", function () {
         getCurrentWeather();
         getDailyWeather();
         getAirQuality();
+        yourCity();
     }, 200);
     setTimeout(() => {
         setTodayValues(todayData);
         setTodayAirQuality(airData);
+        setNext5DaysWeather();
+        todayLocationEl.innerText = city;
     }, 600)
 })
 
@@ -52,10 +88,13 @@ document.addEventListener("DOMContentLoaded", function () {
         getCurrentWeather();
         getDailyWeather();
         getAirQuality();
+        yourCity();
     }, 1000);
     setTimeout(() => {
         setTodayValues(todayData);
         setTodayAirQuality(airData);
+        setNext5DaysWeather();
+        todayLocationEl.innerText = city;
     }, 2000)
 })
 
@@ -134,7 +173,6 @@ function currentLocation() {
     function error(err) {
         console.warn(`ERROR(${err.code}): ${err.message}`);
     }
-
     navigator.geolocation.getCurrentPosition(success, error, options);
 }
 
@@ -155,6 +193,16 @@ function yourIPCoordinates() {
         });
 }
 
+function yourCity() {
+    fetch(`https://geocode.maps.co/reverse?lat=${latitude}&lon=${longitude}`).then((response) => response.json()).then((data) => {
+        console.log('success', data)
+        city = data.address.city;
+    })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+}
+
 
 // ------------------------------------------------------
 // -----------------TODAYS WEATHER-----------------------
@@ -162,7 +210,6 @@ function yourIPCoordinates() {
 
 const todayTempEl = document.getElementById("today-temp");
 const todayDescirptionEl = document.getElementById("description");
-const todayDateEl = document.getElementById("today-date");
 const todayWindEl = document.getElementById("wind-value");
 const todayWindArrowEl = document.getElementById("wind-direction-arrow");
 const todayhumidityEl = document.getElementById("humidity-value");
@@ -182,4 +229,17 @@ function setTodayValues(data) {
 
 function setTodayAirQuality(data) {
     todayAirQualityEl.innerText = data.hourly.pm2_5[hour];
+}
+
+
+function setNext5DaysWeather() {
+    const next5DaysMaxTemp = document.querySelectorAll(".future-temp-max");
+    next5DaysMaxTemp.forEach((max, index) => {
+        max.innerText = futureData.daily.temperature_2m_max[index + 1] + "℃";
+    });
+
+    const next5DaysMinTemp = document.querySelectorAll(".future-temp-min");
+    next5DaysMinTemp.forEach((min, index) => {
+        min.innerText = futureData.daily.temperature_2m_min[index + 1] + "℃";
+    });
 }
