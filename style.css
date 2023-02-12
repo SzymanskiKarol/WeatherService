@@ -1,7 +1,44 @@
-.material-symbols-outlined {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.material-symbols {
     font-variation-settings:
-        'FILL' 0,
+        'FILL' 1,
         'wght' 400,
         'GRAD' 0,
         'opsz' 48
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.hidden {
+    display: none;
 }

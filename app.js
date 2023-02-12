@@ -3,7 +3,7 @@
 // --------------------------------------------------------
 // --------------------SELECTED ELEMENTS-------------------
 // --------------------------------------------------------
-const inputEl = document.querySelector("input");
+const inputEl = document.getElementById("search-inp");
 const searchBtn = document.getElementById("search-btn");
 const locationBtn = document.getElementById("location-btn");
 

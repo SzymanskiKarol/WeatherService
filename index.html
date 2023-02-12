@@ -12,11 +12,111 @@
 </head>
 
 <body>
-  <input type="text" name="" id="">
-  <span id="location-btn" class="material-icons material-symbols-outlined">
-    my_location
-  </span>
-  <button id="search-btn">Click</button>
+  <div class="left-side">
+    <div class="today-weather-container">
+      <div class="search-top-bar">
+        <button class="btn" id="search-places">Search for places</button>
+        <span id="location-btn" class="material-icons">
+          my_location
+        </span>
+      </div>
+      <div class="main-img-holder"></div>
+      <h1 id="today-temp">15℃</h1>
+      <h3 id="description">Shower</h3>
+      <div class="today-date">
+        <p>Today</p>
+        <p>Friday, 5 Jun</p>
+      </div>
+      <div class="location">
+        <span class="material-icons">
+          location_on
+        </span>
+        <p>Helsinki</p>
+      </div>
+    </div>
+    <div class="search-container hidden">
+      <input type="text" name="" id="search-inp">
+      <button class="btn" id="search-btn">Click</button>
+    </div>
+  </div>
+  <div class="right-side">
+    <div class="future-weather-container">
+      <div class="future-box box-1">
+        <p class="future-date">Wed, 10 Jun</p>
+        <img class="future-img" src="" alt="">
+        <div class="future-temp">
+          <span class="future-temp-max">16℃</span>
+          <span class="future-temp-min">11℃</span>
+        </div>
+      </div>
+      <div class="future-box box-2">
+        <p class="future-date">Wed, 10 Jun</p>
+        <img class="future-img" src="" alt="">
+        <div class="future-temp">
+          <span class="future-temp-max">16℃</span>
+          <span class="future-temp-min">11℃</span>
+        </div>
+      </div>
+      <div class="future-box box-3">
+        <p class="future-date">Wed, 10 Jun</p>
+        <img class="future-img" src="" alt="">
+        <div class="future-temp">
+          <span class="future-temp-max">16℃</span>
+          <span class="future-temp-min">11℃</span>
+        </div>
+      </div>
+      <div class="future-box box-4">
+        <p class="future-date">Wed, 10 Jun</p>
+        <img class="future-img" src="" alt="">
+        <div class="future-temp">
+          <span class="future-temp-max">16℃</span>
+          <span class="future-temp-min">11℃</span>
+        </div>
+      </div>
+      <div class="future-box box-5">
+        <p class="future-date">Wed, 10 Jun</p>
+        <img class="future-img" src="" alt="">
+        <div class="future-temp">
+          <span class="future-temp-max">16℃</span>
+          <span class="future-temp-min">11℃</span>
+        </div>
+      </div>
+    </div>
+    <div class="today-hightlighs-container">
+      <h2>Today's Hightlights</h2>
+      <div class="today-details">
+        <div class="today-details-box wind-box">
+          <p>Wind</p>
+          <h2>7 Km/h</h2>
+          <div class="wind-direction">
+            <span class="material-icons">
+              near_me
+            </span>
+            <p>WSW</p>
+          </div>
+        </div>
+        <div class="today-details-box humidity-box">
+          <p>Humidity</p>
+          <h2>85%</h2>
+          <div class="humidity-labels">
+            <label for="humidity-progress">0%</label>
+            <label for="humidity-progress">50%</label>
+            <label for="humidity-progress">100%</label>
+            <progress id="humidity-progress" max="100" value="70"></progress>
+          </div>
+        </div>
+        <div class="today-details-box air-quality-box">
+          <p>Air Quality</p>
+          <h2>32 PM</h2>
+        </div>
+        <div class="today-details-box pressure-box">
+          <p>Air Pressure</p>
+          <h2>998hPa</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="app.js"></script>
 </body>
 
