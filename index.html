@@ -21,22 +21,25 @@
         </span>
       </div>
       <div class="main-img-holder"></div>
-      <h1 id="today-temp">15℃</h1>
+      <h1><span id="today-temp"></span>℃</h1>
       <h3 id="description">Shower</h3>
       <div class="today-date">
         <p>Today</p>
-        <p>Friday, 5 Jun</p>
+        <p id="today-date">Friday, 5 Jun</p>
       </div>
       <div class="location">
         <span class="material-icons">
           location_on
         </span>
-        <p>Helsinki</p>
+        <p id="today-location">Helsinki</p>
       </div>
     </div>
     <div class="search-container hidden">
       <input type="text" name="" id="search-inp">
-      <button class="btn" id="search-btn">Click</button>
+      <button class="btn" id="search-btn">Search</button>
+      <span class="material-icons" id="close-search-container">
+        close
+      </span>
     </div>
   </div>
   <div class="right-side">
@@ -87,31 +90,32 @@
       <div class="today-details">
         <div class="today-details-box wind-box">
           <p>Wind</p>
-          <h2>7 Km/h</h2>
+          <h2><span id="wind-value"></span> km/h</h2>
           <div class="wind-direction">
-            <span class="material-icons">
+            <span id="wind-direction-arrow" class="material-icons">
               near_me
             </span>
-            <p>WSW</p>
           </div>
         </div>
         <div class="today-details-box humidity-box">
           <p>Humidity</p>
-          <h2>85%</h2>
-          <div class="humidity-labels">
-            <label for="humidity-progress">0%</label>
-            <label for="humidity-progress">50%</label>
-            <label for="humidity-progress">100%</label>
+          <h2><span id="humidity-value"></span>%</h2>
+          <div class="humidity-bar">
+            <div class="humidity-bar-labels">
+              <label for="humidity-progress">0</label>
+              <label for="humidity-progress">50</label>
+              <label for="humidity-progress">100</label>
+            </div>
             <progress id="humidity-progress" max="100" value="70"></progress>
           </div>
         </div>
         <div class="today-details-box air-quality-box">
-          <p>Air Quality</p>
-          <h2>32 PM</h2>
+          <p>Air Quality (PM2.5)</p>
+          <h2><span id="air-quality-value"></span> μg/m³</h2>
         </div>
         <div class="today-details-box pressure-box">
           <p>Air Pressure</p>
-          <h2>998hPa</h2>
+          <h2><span id="air-pressure-value"></span> hPa</h2>
         </div>
       </div>
     </div>

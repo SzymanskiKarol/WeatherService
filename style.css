@@ -1,7 +1,84 @@
+:root {
+    --very-dark-blue: #100E1D;
+    --dark-blue: #1E213A;
+    --text-gray: #A09FB1;
+    --text-white: #E7E7EB;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: var(--text-white);
+    font-family: Poppins, sans-serif;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+}
+
+.left-side {
+    width: 30vw;
+    background: var(--dark-blue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.right-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70vw;
+    background: var(--very-dark-blue);
+    padding: 2rem;
+}
+
+.future-weather-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+}
+
+.future-box {
+    background: var(--dark-blue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.today-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.today-details-box {
+    background: var(--dark-blue);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.humidity-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.humidity-bar-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .material-symbols {
