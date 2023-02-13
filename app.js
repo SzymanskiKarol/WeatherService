@@ -87,13 +87,13 @@ document.addEventListener("DOMContentLoaded", function () {
         getDailyWeather();
         getAirQuality();
         yourCity();
-    }, 1000);
+    }, 2000);
     setTimeout(() => {
         setTodayValues(todayData);
         setTodayAirQuality(airData);
         setNext5DaysWeather();
         todayLocationEl.innerText = city;
-    }, 2000)
+    }, 4000)
 })
 
 searchPlacesBtn.addEventListener("click", () => {
@@ -248,7 +248,6 @@ function setNext5DaysWeather() {
     const futureImg = document.querySelectorAll(".future-img");
     futureImg.forEach((img, index) => {
         let code = futureData.daily.weathercode[index + 1];
-        // img.src = "images/Snow.png"
         setImage(code, img);
     })
 }
