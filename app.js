@@ -176,10 +176,10 @@ function currentLocation() {
 function yourIPCoordinates() {
     fetch("https://api.ipify.org?format=json").then((response) => response.json()).then((data) => {
         console.log('success', data)
-        fetch(`https://ip-api.com/json/${data.ip}`).then((response2) => response2.json()).then((data2) => {
+        fetch(`https://reallyfreegeoip.org/json/${data.ip}`).then((response2) => response2.json()).then((data2) => {
             console.log('success', data2)
-            latitude = data2.lat;
-            longitude = data2.lon
+            latitude = data2.latitude;
+            longitude = data2.longitude;
         })
             .catch((error2) => {
                 console.error('Error:', error2);
